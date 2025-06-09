@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Malshinon.Models
 {
+    public SQLConnection Connec = new SQLConnection();
     public class SingelDAL
     {
+
     }
 }
