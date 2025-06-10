@@ -8,14 +8,17 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            SQLConnection connection = new SQLConnection();
-            SingelDAL singelDAL = new SingelDAL();
-            //connection.GetConnecet();
-            //connection.CloseConnecte();
-            People reporter = new People("Netanel","Kalir","n","reporter");
+            SQLConnection DB = new SQLConnection();
+            SingelDAL singelDAL = new SingelDAL(DB);
+            //DB.GetConnecet();
+            //DB.CloseConnecte();
+            People reporter = new People("Avi","Levi","A","reporter");
             People targat = new People("Gaby","Taler","g", "targater");
             singelDAL.AddReporter(reporter);
             singelDAL.AddTargater(targat);
+            //singelDAL.PersonIdentification("a");
+            //singelDAL.DeleteBySecretCode();
+            singelDAL.Updateperson();
         }
     }
 }
