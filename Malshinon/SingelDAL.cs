@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+<<<<<<< HEAD
 using Mysqlx.Crud;
 using static System.Net.Mime.MediaTypeNames;
+=======
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
 
 namespace Malshinon.Models
 {
     public class SingelDAL(SQLConnection SqlConnection)
     {
 
+<<<<<<< HEAD
         public void InsertNewPerson(People people)
+=======
+        public void AddReporter(People people)
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
         {
             try
             {
@@ -67,10 +74,15 @@ namespace Malshinon.Models
 
         }
 
+<<<<<<< HEAD
         public People Updateperson()
         {
 
             var conn = SqlConnection.GetConnecet();
+=======
+        public void Updateperson()
+        {
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
             Console.WriteLine("To update first name presse 1");
             Console.WriteLine("To update lest name presse 2");
             Console.WriteLine("To update type presse 3");
@@ -105,6 +117,7 @@ namespace Malshinon.Models
                     Console.WriteLine("Type updated");
                     break;
             }
+<<<<<<< HEAD
             var SqlCommend = new MySqlCommand(query, conn);
             var reader = SqlCommend.ExecuteReader();
             People people = null;
@@ -121,6 +134,15 @@ namespace Malshinon.Models
         }
 
         public void InsertNewTargater(People people)
+=======
+            var conn = SqlConnection.GetConnecet();
+            var SqlCommend = new MySqlCommand(query, conn);
+            var reader = SqlCommend.ExecuteReader();
+            SqlConnection.CloseConnecte();
+        }
+
+        public void AddTargater(People people)
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
         {
             try
             {
@@ -147,6 +169,7 @@ namespace Malshinon.Models
         }
 
 
+<<<<<<< HEAD
         public People GetPersonBySecretCode()
         {
             var conn = SqlConnection.GetConnecet();
@@ -158,6 +181,23 @@ namespace Malshinon.Models
             var reader = SqlCommend.ExecuteReader();
 
             
+=======
+        //public void SubmittingAreport()
+        //{
+        //    Console.WriteLine("To access. enter your codeName");
+        //    string codeName = Console.ReadLine();
+        //    var conn = SqlConnection.GetConnecet();
+        //    string query = $"SELECT p.text AS text * FROM peopel p WHERE p.codeName = {codeName} ";
+        //}
+
+        public People PersonIdentification(string secretCode)
+        {
+            var conn = SqlConnection.GetConnecet();
+            string query = $"SELECT * FROM people p WHERE secretCode = '{secretCode}' ";
+            var SqlCommend = new MySqlCommand(query, conn);
+            var reader = SqlCommend.ExecuteReader();
+            People people = null;
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
             try
             {
                 if (reader.HasRows)
@@ -184,7 +224,11 @@ namespace Malshinon.Models
                     string ln = Console.ReadLine();
                     people = new People(fn, ln, secretCode, "reporter");
                     Console.WriteLine($"codeName {secretCode} does not exist. Creates a new record.");
+<<<<<<< HEAD
                     InsertNewPerson(people);
+=======
+                    AddReporter(people);
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
                 }
             }
             catch (MySqlException ex)
@@ -199,6 +243,7 @@ namespace Malshinon.Models
             return people;
         }
 
+<<<<<<< HEAD
 
         public IntelReports InsertIntelReport()
         {
@@ -307,5 +352,44 @@ namespace Malshinon.Models
             //    string query1 = $"SELECT * FROM IntelReports  WHERE target_id = '{code}' ";
             //}
         }
+=======
+        //public IntelReports AddReport()
+        //{
+        //    Console.WriteLine("To report enter your name code ");
+        //    string codeName = Console.ReadLine();
+        //    var conn = SqlConnection.GetConnecet();
+        //    string query = $"SELECT * FROM IntelReports  WHERE target_id = '{codeName}' ";
+        //    var SqlCommend = new MySqlCommand(query, conn);
+        //    var reader = SqlCommend.ExecuteReader();
+        //    if (reader.HasRows)
+        //    {
+        //        Console.WriteLine("You evaint to report. fail free");
+        //        string text = Console.ReadLine();
+        //        //פיצול של הטקסט למילים בלי רווחים ובלי תווים מיוחדים
+        //        string[] words = text.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+        //        List<string> textList = new List<string>(words);
+        //        string code;
+        //        foreach (string word in textList)
+        //        {
+        //            if (word == codeName)
+        //            {
+        //                code = word;
+        //            }
+        //            else
+        //            {
+        //                People people;
+        //                Console.WriteLine("enter first name");
+        //                string fn = Console.ReadLine();
+        //                Console.WriteLine("enter lest name");
+        //                string ln = Console.ReadLine();
+        //                people = new People(fn, ln, codeName, "targater");
+        //                Console.WriteLine($"codeName {codeName} does not exist. Creates a new record.");
+        //                AddReporter(people);
+        //            }
+        //        }
+        //        string query1 = $"SELECT * FROM IntelReports  WHERE target_id = '{code}' ";
+        //    }
+        //}
+>>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
     }
 

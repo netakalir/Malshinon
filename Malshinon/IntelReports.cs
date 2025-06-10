@@ -14,11 +14,18 @@ namespace Malshinon
         public string Text { get; set; }
         public DateTime Timestamp { get; set; }
 
+        
+
         public IntelReports(int reporterId, int targatId, string text) 
         {
             ReporterId = reporterId;
             TargatId = targatId;
             Text = text;
         }
+
+        //public int AvgTextLen()
+        //{
+
+        //}
     }
 }
