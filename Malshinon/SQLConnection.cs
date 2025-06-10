@@ -20,7 +20,7 @@ namespace Malshinon.Models
             try
             {
                 connection.Open();
-                Console.WriteLine("Connected to MySQL database successfully");
+                //Console.WriteLine("Connected to MySQL database successfully");
             }
             catch (MySqlException e)
             {
@@ -35,7 +35,7 @@ namespace Malshinon.Models
             try
             {
                 connection.Close();
-                Console.WriteLine("close connected to database successfully");
+                //Console.WriteLine("close connected to database successfully");
             }
 
             catch(MySqlException e) 
