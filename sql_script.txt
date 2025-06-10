@@ -1,0 +1,18 @@
+CREATE TABLE `people` (
+  `id` int(11) NOT NULL,
+  `firstName` varchar(10) DEFAULT NULL,
+  `lestName` varchar(10) DEFAULT NULL,
+  `secretCode` varchar(5) DEFAULT NULL,
+  `type` enum('reportet','target','both','potentialAgent') DEFAULT NULL,
+  `numReports` int(11) DEFAULT 0,
+  `numMentions` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE `intelreports` (
+  `id` int(11) NOT NULL,
+  `reporter_id` int(11) DEFAULT NULL,
+  `target_id` int(11) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `timestamp` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
