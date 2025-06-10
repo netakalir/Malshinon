@@ -19,12 +19,8 @@ namespace Malshinon
             //singelDAL.PersonIdentification("a");
             //singelDAL.DeleteBySecretCode();
             //singelDAL.Updateperson();
-<<<<<<< HEAD
-            //singelDAL.GetPersonBySecretCode();
             singelDAL.UpdateReportCounts();
-=======
             singelDAL.GetPersonBySecretCode();
->>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
         }
     }
 }

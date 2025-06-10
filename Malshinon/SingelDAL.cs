@@ -4,18 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-<<<<<<< HEAD
 using Mysqlx.Crud;
 using static System.Net.Mime.MediaTypeNames;
-=======
->>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
 
 namespace Malshinon.Models
 {
     public class SingelDAL(SQLConnection SqlConnection)
     {
 
-<<<<<<< HEAD
+
         public void InsertNewPerson(People people)
 =======
         public void AddReporter(People people)
@@ -74,7 +71,7 @@ namespace Malshinon.Models
 
         }
 
-<<<<<<< HEAD
+
         public People Updateperson()
         {
 
@@ -117,8 +114,6 @@ namespace Malshinon.Models
                     Console.WriteLine("Type updated");
                     break;
             }
-<<<<<<< HEAD
-            var SqlCommend = new MySqlCommand(query, conn);
             var reader = SqlCommend.ExecuteReader();
             People people = null;
             while (reader.Read())
@@ -169,7 +164,6 @@ namespace Malshinon.Models
         }
 
 
-<<<<<<< HEAD
         public People GetPersonBySecretCode()
         {
             var conn = SqlConnection.GetConnecet();
@@ -180,7 +174,7 @@ namespace Malshinon.Models
             var SqlCommend = new MySqlCommand(query, conn);
             var reader = SqlCommend.ExecuteReader();
 
-            
+
 =======
         //public void SubmittingAreport()
         //{
@@ -243,7 +237,6 @@ namespace Malshinon.Models
             return people;
         }
 
-<<<<<<< HEAD
 
         public IntelReports InsertIntelReport()
         {
@@ -270,18 +263,9 @@ namespace Malshinon.Models
             return Report;
         }
 
-        
-        //public void AddNewReport()
-        //{
-        //    People reporter = GetPersonBySecretCode();
-        //    IntelReports report = InsertIntelReport();
-        //    string[] words = report.Text.Split(' ');
-        //    List<string> textList = new List<string>(words);
-        //}todo
-
         public void UpdateReportCounts()
         {
-            People people = GetPersonBySecretCode(); 
+            People people = GetPersonBySecretCode();
             var conn = SqlConnection.GetConnecet();
             string query = $"UPDATE people SET numReports = numReports + 1 WHERE secretCode = '{people.SecretCode}' ";
             var SqlCommend = new MySqlCommand(query, conn);
@@ -292,20 +276,8 @@ namespace Malshinon.Models
                 Console.WriteLine("Type changed to potential Agent");
             }
             SqlConnection.CloseConnecte();
-            
+
         }
-
-        //public void UpdateMentionCounts()
-        //{
-        //    var conn = SqlConnection.GetConnecet();
-        //    Console.WriteLine("enter secret code");
-        //    string secretCode = Console.ReadLine();
-        //    string query = $"UPDATE people SET NumMentions = NumMentions + 1 WHERE id = {secretCode}";
-        //    var SqlCommend = new MySqlCommand(query, conn);
-        //    var reader = SqlCommend.ExecuteReader();
-        //    SqlConnection.CloseConnecte();
-        //}todo
-
 
         public void UpdateTypeBySecretCode()
         {
@@ -323,73 +295,56 @@ namespace Malshinon.Models
             SqlConnection.CloseConnecte();
         }
 
-            //if (reader.HasRows)
-            //{
-            //    Console.WriteLine("You evaint to report. fail free");
-            //    string text = Console.ReadLine();
-            //    //פיצול של הטקסט למילים בלי רווחים ובלי תווים מיוחדים
-            //    string[] words = text.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-            //    List<string> textList = new List<string>(words);
-            //    string code;
-            //    foreach (string word in textList)
-            //    {
-            //        if (word == codeName)
-            //        {
-            //            code = word;
-            //        }
-            //        else
-            //        {
-            //            People people;
-            //            Console.WriteLine("enter first name");
-            //            string fn = Console.ReadLine();
-            //            Console.WriteLine("enter lest name");
-            //            string ln = Console.ReadLine();
-            //            people = new People(fn, ln, codeName, "targater");
-            //            Console.WriteLine($"codeName {codeName} does not exist. Creates a new record.");
-            //            AddReporter(people);
-            //        }
-            //    }
-            //    string query1 = $"SELECT * FROM IntelReports  WHERE target_id = '{code}' ";
-            //}
-        }
-=======
-        //public IntelReports AddReport()
+        //public void UpdateMentionCounts()
         //{
-        //    Console.WriteLine("To report enter your name code ");
-        //    string codeName = Console.ReadLine();
         //    var conn = SqlConnection.GetConnecet();
-        //    string query = $"SELECT * FROM IntelReports  WHERE target_id = '{codeName}' ";
+        //    Console.WriteLine("enter secret code");
+        //    string secretCode = Console.ReadLine();
+        //    string query = $"UPDATE people SET NumMentions = NumMentions + 1 WHERE id = {secretCode}";
         //    var SqlCommend = new MySqlCommand(query, conn);
         //    var reader = SqlCommend.ExecuteReader();
-        //    if (reader.HasRows)
-        //    {
-        //        Console.WriteLine("You evaint to report. fail free");
-        //        string text = Console.ReadLine();
-        //        //פיצול של הטקסט למילים בלי רווחים ובלי תווים מיוחדים
-        //        string[] words = text.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
-        //        List<string> textList = new List<string>(words);
-        //        string code;
-        //        foreach (string word in textList)
-        //        {
-        //            if (word == codeName)
-        //            {
-        //                code = word;
-        //            }
-        //            else
-        //            {
-        //                People people;
-        //                Console.WriteLine("enter first name");
-        //                string fn = Console.ReadLine();
-        //                Console.WriteLine("enter lest name");
-        //                string ln = Console.ReadLine();
-        //                people = new People(fn, ln, codeName, "targater");
-        //                Console.WriteLine($"codeName {codeName} does not exist. Creates a new record.");
-        //                AddReporter(people);
-        //            }
-        //        }
-        //        string query1 = $"SELECT * FROM IntelReports  WHERE target_id = '{code}' ";
-        //    }
-        //}
->>>>>>> 6405603d0f031f69ce3513c30fbbe878c1ca4b2e
+        //    SqlConnection.CloseConnecte();
+        //}todo
+
+        //public void AddNewReport()
+        //{
+        //    People reporter = GetPersonBySecretCode();
+        //    IntelReports report = InsertIntelReport();
+        //    string[] words = report.Text.Split(' ');
+        //    List<string> textList = new List<string>(words);
+        //}todo
+
+
     }
+}
+
+
+//    if (reader.HasRows)
+//    {
+//        Console.WriteLine("You evaint to report. fail free");
+//        string text = Console.ReadLine();
+//        //פיצול של הטקסט למילים בלי רווחים ובלי תווים מיוחדים
+//        string[] words = text.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+//        List<string> textList = new List<string>(words);
+//        string code;
+//        foreach (string word in textList)
+//        {
+//            if (word == codeName)
+//            {
+//                code = word;
+//            }
+//            else
+//            {
+//                People people;
+//                Console.WriteLine("enter first name");
+//                string fn = Console.ReadLine();
+//                Console.WriteLine("enter lest name");
+//                string ln = Console.ReadLine();
+//                people = new People(fn, ln, codeName, "targater");
+//                Console.WriteLine($"codeName {codeName} does not exist. Creates a new record.");
+//                AddReporter(people);
+//            }
+//        }
+//        string query1 = $"SELECT * FROM IntelReports  WHERE target_id = '{code}' ";
+//    }
 
