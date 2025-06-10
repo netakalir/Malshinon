@@ -9,20 +9,11 @@ namespace Malshinon.Models
 {
     public class Methods
     {
-        public void UpdateNumReports()
-        {
+        
 
-        }
+        
 
-        public void UpdateNumMentions()
-        {
-
-        }
-
-        public void UpdateType()
-        {
-
-        }
+        
 
         public void UpdateReporterStats()
         { 

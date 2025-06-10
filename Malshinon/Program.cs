@@ -12,13 +12,14 @@ namespace Malshinon
             SingelDAL singelDAL = new SingelDAL(DB);
             //DB.GetConnecet();
             //DB.CloseConnecte();
-            People reporter = new People("Avi","Levi","A","reporter");
-            People targat = new People("Gaby","Taler","g", "targater");
-            singelDAL.AddReporter(reporter);
-            singelDAL.AddTargater(targat);
+            //People reporter = new People("Avi","Levi","A","reporter");
+            //People targat = new People("Gaby","Taler","g", "targater");
+            //singelDAL.AddReporter(reporter);
+            //singelDAL.AddTargater(targat);
             //singelDAL.PersonIdentification("a");
             //singelDAL.DeleteBySecretCode();
-            singelDAL.Updateperson();
+            //singelDAL.Updateperson();
+            singelDAL.GetPersonBySecretCode();
         }
     }
 }
