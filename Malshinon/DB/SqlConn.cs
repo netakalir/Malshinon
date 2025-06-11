@@ -12,7 +12,7 @@ namespace Malshinon.Models
         static string connectionString = "Server=localhost;DataBase=malshinon;User=root;Password='';Port=3306;";
         public MySqlConnection connection;
 
-        
+
         public MySqlConnection GetConnecet()
         {
             var conn = new MySqlConnection(connectionString);
@@ -38,7 +38,7 @@ namespace Malshinon.Models
                 //Console.WriteLine("close connected to database successfully");
             }
 
-            catch(MySqlException e) 
+            catch (MySqlException e)
             {
                 Console.WriteLine($"Error: close connect to database is faild: {e.Message}");
             }
@@ -46,4 +46,5 @@ namespace Malshinon.Models
 
     }
 }
+
 

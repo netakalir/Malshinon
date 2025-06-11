@@ -1,4 +1,5 @@
 ﻿using System;
+using Malshinon.DAL;
 using Malshinon.Models;
 
 
@@ -8,19 +9,32 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            SQLConnection DB = new SQLConnection();
-            SingelDAL singelDAL = new SingelDAL(DB);
-            //DB.GetConnecet();
-            //DB.CloseConnecte();
-            //People reporter = new People("Avi","Levi","A","reporter");
-            //People targat = new People("Gaby","Taler","g", "targater");
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //People reporter;
+            //People targat = new People("Mair", "Tom", "M", "targater");
             //singelDAL.AddReporter(reporter);
             //singelDAL.AddTargater(targat);
-            //singelDAL.PersonIdentification("a");
+            //singelDAL.PersonIdentification("P");
+            //People target = singelDAL.PersonIdentification(codeName);
             //singelDAL.DeleteBySecretCode();
             //singelDAL.Updateperson();
-            singelDAL.UpdateReportCounts();
-            singelDAL.GetPersonBySecretCode();
+            //singelDAL.UpdateReportCounts();
+            //singelDAL.GetPersonBySecretCode();
+            //singelDAL.InsertIntelReport();
+            //Manu manu = new Manu();
+            //manu.ShouManu();
         }
     }
 }
