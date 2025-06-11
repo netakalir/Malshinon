@@ -8,13 +8,13 @@ using Malshinon.DAL;
 
 namespace Malshinon.Models
 {
-    public class Manu()
+    public class Manu
     {
         private SQLConnection DB;
         private PeopleDAL PeopleDAL;
         private IntalDAL IntalDAL;
 
-        public void manu(SQLConnection db, PeopleDAL peopleDal, IntalDAL intalDal)
+        public Manu(SQLConnection db, PeopleDAL peopleDal, IntalDAL intalDal)
         {
             DB = db;
             PeopleDAL = peopleDal;
@@ -50,7 +50,9 @@ namespace Malshinon.Models
         {
             Console.WriteLine("To identification enter secrat code");
             string RSC = Console.ReadLine()!;
-            if(PeopleDAL.PersonIdentification(RSC!))
+            var resp = PeopleDAL.PersonIdentification(RSC);
+            Console.WriteLine(resp);
+            if (PeopleDAL.PersonIdentification(RSC))
             {
                 People reporter = PeopleDAL.GetPersonBySecretCode(RSC!);
                 Console.WriteLine("Identification of people was successful.");
@@ -61,6 +63,7 @@ namespace Malshinon.Models
                 Console.WriteLine("feel free to reporting");
                 string Text = Console.ReadLine()!;
                 IntalDAL.InsertIntelReport(reporter.Id, targeter.Id, Text!);
+
             }
             
             else

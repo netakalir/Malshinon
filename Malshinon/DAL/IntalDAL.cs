@@ -8,8 +8,13 @@ using MySql.Data.MySqlClient;
 
 namespace Malshinon.DAL
 {
-    public class IntalDAL(SQLConnection sqlConn)
+    public class IntalDAL
     {
+        private SQLConnection sqlConn;
+        public IntalDAL(SQLConnection _sqlConn)
+        {
+            sqlConn = _sqlConn;
+        }
         public IntelReports InsertIntelReport(int reporter_id, int targater_id, string text) //
         {
             IntelReports Report = null;
@@ -48,13 +53,13 @@ namespace Malshinon.DAL
                 //}
 
                 string new_query = @"INSERT INTO intelreports
-                                (ReporterId, TargatId, text) 
+                                (reporter_id, target_id, text) 
                                 VALUES(@ReporterId, @TargatId, @Text)";
                 var SqlCommend = new MySqlCommand(new_query, conn);
                 SqlCommend.Parameters.AddWithValue("@ReporterId", reporter_id);
                 SqlCommend.Parameters.AddWithValue("@TargatId", targater_id);
                 SqlCommend.Parameters.AddWithValue("@Text", text);
-
+                var reder = SqlCommend.ExecuteReader();
                 sqlConn.CloseConnecte();
             }
             catch (MySqlException ex)

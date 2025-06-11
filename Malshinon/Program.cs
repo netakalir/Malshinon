@@ -9,7 +9,11 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-            Manu manu = new Manu();
+            SQLConnection db = new SQLConnection();
+            PeopleDAL peopleDal = new PeopleDAL(db);
+            IntalDAL intalDal = new IntalDAL(db);
+            Manu manu = new Manu(db, peopleDal, intalDal);
+
             //manu.InsertReportr("Mair", "Tom", "M", "reportr");
             manu.ShouManu();
 

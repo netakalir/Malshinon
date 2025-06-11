@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using Malshinon.Models;
-using System.Threading;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Malshinon.DAL
 {
-    public class PeopleDAL(SQLConnection sqlConn)
+    public class PeopleDAL
     {
+        private SQLConnection sqlConn;
+        public  PeopleDAL(SQLConnection _sqlConn)
+        {
+            sqlConn = _sqlConn;
+        }
         public void InsertNewPerson(People people) 
         {
             try
@@ -47,67 +50,31 @@ namespace Malshinon.DAL
         public bool PersonIdentification(string secretCode)
         {
             bool status = false;
-            var conn = sqlConn.GetConnecet();
-            string query = $"SELECT * FROM people p WHERE secretCode = '{secretCode}' ";
-            var SqlCommend = new MySqlCommand(query, conn);
-            var reader = SqlCommend.ExecuteReader();
-            People people = null;
             try
             {
+                var conn = sqlConn.GetConnecet();
+                string query = $"SELECT * FROM people p WHERE secretCode = '{secretCode}' ";
+                var SqlCommend = new MySqlCommand(query, conn);
+                var reader = SqlCommend.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    while (reader.Read())
-                    {
-                        string firstName = reader.GetString("firstName");
-                        string lestName = reader.GetString("lestName");
-                        string Code = reader.GetString("secretCode");
-                        string type = reader.GetString("type");
-                        int NumReports = reader.GetInt32("NumReports");
-                        int NumMentions = reader.GetInt32("NumMentions");
-                        people = new(firstName, lestName, Code, type, NumReports, NumMentions);
-                        status = true;
-                    }
+                    status = true;
+                    return status;
                 }
-                return status;
             }
-            catch 
+            
+            catch (MySqlException e)
             {
-                return status;
+                Console.WriteLine(e);
+                Console.WriteLine(e.Message );
             }
             finally 
             {
                 sqlConn.CloseConnecte();
             }
-            
-            
+            return status;
         }
 
-        //public void AddTargater(string secratCode)
-        //{
-        //    try
-        //    {
-        //        People people = null;
-        //        var conn = sqlConn.GetConnecet();
-        //        string query = @"INSERT INTO people 
-        //        (firstName, lestName, secretCode, type, numReports, numMentions) 
-        //        VALUES(@firstName, @lestName, @secretCode, @type, @numReports, @numMentions)";
-        //        var SqlCommend = new MySqlCommand(query, conn);
-        //        SqlCommend.Parameters.AddWithValue("@firstName", people.FirsName);
-        //        SqlCommend.Parameters.AddWithValue("@lestName", people.LestName);
-        //        SqlCommend.Parameters.AddWithValue("@secretCode", people.SecretCode);
-        //        SqlCommend.Parameters.AddWithValue("@type", people.Type);
-        //        SqlCommend.Parameters.AddWithValue("@numReports", people.NumReports);
-        //        SqlCommend.Parameters.AddWithValue("@numMentions", people.NumMentions);
-        //        var reader = SqlCommend.ExecuteReader();
-        //        sqlConn.CloseConnecte();
-        //        Console.WriteLine("Targater added successfully");
-        //    }
-
-        //    catch (MySqlException e)
-        //    {
-        //        Console.WriteLine($"Targater added faild {e.Message}");
-        //    }
-        //}
 
         public void DeleteBySecretCode(string secretCode)
         {
