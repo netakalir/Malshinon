@@ -29,7 +29,7 @@ namespace Malshinon.DAL
                 SqlCommend.Parameters.AddWithValue("@numReports", people.NumReports);
                 SqlCommend.Parameters.AddWithValue("@numMentions", people.NumMentions);
                 var reader = SqlCommend.ExecuteReader();
-                sqlConn.CloseConnecte();
+                
                 Console.WriteLine("person added successfully");
 
             }
@@ -37,6 +37,10 @@ namespace Malshinon.DAL
             catch (MySqlException e)
             {
                 Console.WriteLine($"person added faild {e.Message}");
+            }
+            finally
+            {
+                sqlConn.CloseConnecte();
             }
         }
 
@@ -63,15 +67,19 @@ namespace Malshinon.DAL
                         people = new(firstName, lestName, Code, type, NumReports, NumMentions);
                         status = true;
                     }
-                    sqlConn.CloseConnecte();
-                    
                 }
+                return status;
             }
-            catch (MySqlException ex)
+            catch 
             {
-                Console.WriteLine(ex.Message);
+                return status;
             }
-            return status;
+            finally 
+            {
+                sqlConn.CloseConnecte();
+            }
+            
+            
         }
 
         //public void AddTargater(string secratCode)
@@ -112,11 +120,11 @@ namespace Malshinon.DAL
                 if (reader != null)
                 {
                     Console.WriteLine("You are delete person");
-                    sqlConn.CloseConnecte();
+                    
                 }
                 else
                 {
-                    sqlConn.CloseConnecte();
+                    
                     Console.WriteLine("Person deletion process failed");
                 }
             }
@@ -124,6 +132,10 @@ namespace Malshinon.DAL
             {
                 sqlConn.CloseConnecte();
                 Console.WriteLine(e);
+            }
+            finally
+            {
+                sqlConn.CloseConnecte();
             }
         }
 
@@ -148,7 +160,7 @@ namespace Malshinon.DAL
                         int NumMentions = reader.GetInt32("NumMentions");
                         people = new(firstName, lestName, Code, type, NumReports, NumMentions);
                     }
-                    sqlConn.CloseConnecte();
+                    
                     return people;
                 }
                 else
@@ -170,9 +182,9 @@ namespace Malshinon.DAL
                 Console.WriteLine(ex.Message);
             }
 
-            catch (Exception e)
+            finally
             {
-                throw new Exception(e.Message);
+                sqlConn.CloseConnecte();
             }
             return null;
         }
@@ -239,9 +251,7 @@ namespace Malshinon.DAL
             sqlConn.CloseConnecte();
         }
 
-        //public People GetRecordOfPeople()
-        //{
-        //    return people;
-        //}todo
+        
+        
     }
 }

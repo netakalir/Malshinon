@@ -9,7 +9,9 @@ namespace Malshinon
     {
         static void Main(string[] args)
         {
-
+            Manu manu = new Manu();
+            //manu.InsertReportr("Mair", "Tom", "M", "reportr");
+            manu.ShouManu();
 
 
 
